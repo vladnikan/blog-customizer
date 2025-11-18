@@ -1,6 +1,6 @@
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './ArticleParamsForm.module.scss';
 import clsx from 'clsx';
@@ -50,6 +50,17 @@ export const ArticleParamsForm = ({
 	const handleClick = () => {
 		setOpen(!isOpen);
 	};
+
+	useEffect(() => {
+		const handleClose = (e: MouseEvent) => {
+			const target = e.target as Element;
+			if (!target.closest(`.${styles.container}`)) {
+				setOpen(false);
+			}
+		};
+		document.addEventListener('mousedown', handleClose);
+		return () => document.removeEventListener('mousedown', handleClose);
+	}, []);
 
 	return (
 		<>
