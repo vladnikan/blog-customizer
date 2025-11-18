@@ -15,6 +15,7 @@ import {
 	fontSizeOptions,
 	contentWidthArr,
 } from 'src/constants/articleProps';
+import { Text } from 'src/ui/text';
 
 type Props = {
 	font: OptionType;
@@ -70,6 +71,9 @@ export const ArticleParamsForm = ({
 					[styles.container_open]: isOpen,
 				})}>
 				<form className={styles.form}>
+					<Text as='h2' size={31} weight={800} uppercase>
+						задайте параметры
+					</Text>
 					<Select
 						title='Шрифт'
 						selected={font}
