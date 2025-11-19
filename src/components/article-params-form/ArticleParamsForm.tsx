@@ -70,7 +70,12 @@ export const ArticleParamsForm = ({
 				className={clsx(styles.container, {
 					[styles.container_open]: isOpen,
 				})}>
-				<form className={styles.form}>
+				<form
+					className={styles.form}
+					onSubmit={(e) => {
+						e.preventDefault();
+						handleApply();
+					}}>
 					<Text as='h2' size={31} weight={800} uppercase>
 						задайте параметры
 					</Text>
@@ -114,12 +119,7 @@ export const ArticleParamsForm = ({
 							type='clear'
 							onClick={handleReset}
 						/>
-						<Button
-							title='Применить'
-							htmlType='button'
-							type='apply'
-							onClick={handleApply}
-						/>
+						<Button title='Применить' htmlType='submit' type='apply' />
 					</div>
 				</form>
 			</aside>
